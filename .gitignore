@@ -1,0 +1,22 @@
+*.pyc
+
+# Translations compiled files
+*.mo
+
+# Local development ignores
+venv
+data.sqlite
+.env
+*.ini
+*.pid
+
+# Production config
+local.cfg
+.vscode
+
+# Static
+static/libs/*
+static/admin/*
+static/rest_framework
+media/
+secret.py
