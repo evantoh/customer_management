@@ -37,7 +37,7 @@ class Location(models.Model):
     subCounty = models.CharField(max_length=50, blank=True, null=True)  # Sub-county of the location
     ward = models.CharField(max_length=50, blank=True, null=True)  # Ward of the location
     buildingName = models.CharField(max_length=100, blank=True, null=True)  # Name of the building
-    floor = models.IntegerField(blank=True, null=True)  # Floor number of the building
+    floor = models.CharField(max_length=10, blank=True, null=True)  # Floor number of the building
 
     def __str__(self):
         return f"{self.buildingName}, {self.ward}, {self.subCounty}, {self.county}"  # String representation of the location model
