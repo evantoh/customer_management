@@ -32,3 +32,76 @@ class CustomerRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
+
+# create and get Business
+class CreateListBusiness(generics.ListCreateAPIView):
+    queryset = Business.objects.all()
+    serializer_class = BusinessSerializer
+    # permission_classes = [permissions.IsAuthenticated]
+
+
+# retrieve, update and delete a specific Business
+class BusinessRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = [permissions.IsAuthenticated]
+    queryset = Business.objects.all()
+    print("queryset", queryset)
+    serializer_class = BusinessSerializer
+
+
+    def delete(self, request, *args, **kwargs):
+        instance = self.get_object()
+        print("serializer_class", self.get_object())
+
+
+        self.perform_destroy(instance)
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+# create and get Location
+class CreateListLocation(generics.ListCreateAPIView):
+    queryset = Location.objects.all()
+    serializer_class = LocationSerializer
+    # permission_classes = [permissions.IsAuthenticated]
+
+
+# retrieve, update and delete a specific Business
+class LocationRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
+    # permission_classes = [permissions.IsAuthenticated]
+    queryset = Location.objects.all()
+    print("queryset", queryset)
+    serializer_class = LocationSerializer
+
+
+    def delete(self, request, *args, **kwargs):
+        instance = self.get_object()
+        print("serializer_class", self.get_object())
+
+
+        self.perform_destroy(instance)
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+
+
+# create and get CustomerBusinessLocation
+class CustomerBusinessLocationListCreate(generics.ListCreateAPIView):
+    queryset = CustomerBusinessLocation.objects.all()
+    serializer_class = CustomerBusinessLocation
+    # permission_classes = [permissions.IsAuthenticated]
+
+
+# retrieve, update and delete a specific CustomerBusinessLocation
+class CustomerBusinessLocationRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
+    # permission_classes = [permissions.IsAuthenticated]
+    queryset = CustomerBusinessLocation.objects.all()
+    print("queryset", queryset)
+    serializer_class = CustomerBusinessLocation
+
+
+    def delete(self, request, *args, **kwargs):
+        instance = self.get_object()
+        # print("serializer_class", self.get_object())
+
+
+        self.perform_destroy(instance)
+        return Response(status=status.HTTP_204_NO_CONTENT)

@@ -1,4 +1,6 @@
 from django.db import models
+from datetime import date
+
 
 class Customer(models.Model):
     # Customer model representing information about customers
