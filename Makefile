@@ -9,7 +9,7 @@ server:
 	python manage.py runserver
 
 # Command to create a superuser
-createsuperuser:
+superuser:
 	python manage.py createsuperuser
 
 # Command to run tests

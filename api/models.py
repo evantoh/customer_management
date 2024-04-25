@@ -40,7 +40,7 @@ class Location(models.Model):
     def __str__(self):
         return f"{self.buildingName}, {self.ward}, {self.subCounty}, {self.county}"  # String representation of the location model
 
-class CustomerBusiness(models.Model):
+class CustomerBusinessLocation(models.Model):
     # CustomerBusiness model representing the relationship between customers and businesses
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)  # Reference to the customer
     business = models.ForeignKey(Business, on_delete=models.CASCADE)  # Reference to the business

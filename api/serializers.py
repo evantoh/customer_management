@@ -1,6 +1,6 @@
 # Create serializers for each model to convert model instances to JSON representations and vice versa
 from rest_framework import serializers
-from .models import Customer, Business, Location, CustomerBusiness
+from .models import Customer, Business, Location, CustomerBusinessLocation
 
 class CustomerSerializer(serializers.ModelSerializer):
     class Meta:
@@ -17,7 +17,7 @@ class LocationSerializer(serializers.ModelSerializer):
         model = Location
         fields = '__all__'
 
-class CustomerBusinessSerializer(serializers.ModelSerializer):
+class CustomerBusinessLocationSerializer(serializers.ModelSerializer):
     class Meta:
-        model = CustomerBusiness
+        model = CustomerBusinessLocation
         fields = '__all__'
