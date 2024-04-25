@@ -28,7 +28,19 @@ urlpatterns = [
     path('locations/<int:pk>/', views.LocationRetrieveUpdateDestroy.as_view(), name='LocationRetrieveUpdateDestroy'),
 
 
-    path('customer-business-location/', views.CustomerBusinessLocationListCreate.as_view(), name='CreateCustomerBusinessLocation'),
-    path('customer-business-location/<int:pk>/', views.CustomerBusinessLocationRetrieveUpdateDestroy.as_view(), name='CustomerBusinessLocationRetrieveUpdateDestroy')
+
+    path('customer-business-location/', views.CustomerBusinessLocationViewSet.as_view({
+        'get': 'list',
+        'post': 'create',
+        'put': 'update',
+        'patch': 'partial_update',
+        'delete': 'destroy'
+    })),
+    path('customer-business-location/<int:pk>/', views.CustomerBusinessLocationViewSet.as_view({
+        'get': 'retrieve',
+        'put': 'update',
+        'patch': 'partial_update',
+        'delete': 'destroy'
+    })),
 
 ]

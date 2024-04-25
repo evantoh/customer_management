@@ -18,6 +18,10 @@ class LocationSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class CustomerBusinessLocationSerializer(serializers.ModelSerializer):
+    customer = CustomerSerializer()
+    business = BusinessSerializer()
+    location = LocationSerializer()
+
     class Meta:
         model = CustomerBusinessLocation
         fields = '__all__'

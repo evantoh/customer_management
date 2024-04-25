@@ -1,4 +1,8 @@
 *.pyc
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
 
 # Translations compiled files
 *.mo
