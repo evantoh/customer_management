@@ -12,6 +12,8 @@ class CreateListCustomers(generics.ListCreateAPIView):
     queryset = Customer.objects.all()  # Queryset for retrieving all customers
     serializer_class = CustomerSerializer  # Serializer class for serializing/deserializing customers
 
+
+
 # API view for retrieving, updating, and deleting a specific customer
 class CustomerRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [permissions.IsAuthenticated]  # Permission class for accessing the view
@@ -24,11 +26,15 @@ class CustomerRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
         return Response(status=status.HTTP_204_NO_CONTENT)  # Return success response
 
 
+
+
 # Similar API views for Business and Location models...
 class CreateListBusiness(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticated]  # Permission class for accessing the view
     queryset = Business.objects.all()
     serializer_class = BusinessSerializer
+
+
 
 class BusinessRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [permissions.IsAuthenticated]  # Permission class for accessing the view
@@ -41,10 +47,14 @@ class BusinessRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
         self.perform_destroy(instance)
         return Response(status=status.HTTP_204_NO_CONTENT)
 
+
+
 class CreateListLocation(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticated]  # Permission class for accessing the view
     queryset = Location.objects.all()
     serializer_class = LocationSerializer
+
+
 
 class LocationRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [permissions.IsAuthenticated]
@@ -56,6 +66,8 @@ class LocationRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
         self.perform_destroy(instance)
         return Response(status=status.HTTP_204_NO_CONTENT)
 
+
+
 # API view for retrieving, updating, and deleting a specific CustomerBusinessLocation instance
 class CustomerBusinessLocationRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [permissions.IsAuthenticated]
@@ -66,6 +78,8 @@ class CustomerBusinessLocationRetrieveUpdateDestroy(generics.RetrieveUpdateDestr
         instance = self.get_object()
         self.perform_destroy(instance)
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
 
 # Viewset for CustomerBusinessLocation model
 class CustomerBusinessLocationViewSet(viewsets.ModelViewSet):

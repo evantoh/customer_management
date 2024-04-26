@@ -11,36 +11,30 @@ urlpatterns = router.urls
 
 app_name = 'api'
 urlpatterns = [
-    # create/get customers  
-    path('customers/', views.CreateListCustomers.as_view(), name='createListCustomers'),
-    # Retrieve a specific customer
-    path('customers/<int:pk>/', views.CustomerRetrieveUpdateDestroy.as_view(), name='customerRetrieveUpdateDelete'),
+    # URLs for handling customers
+    path('customers/', views.CreateListCustomers.as_view(), name='createListCustomers'),  # Create and list customers
+    path('customers/<int:pk>/', views.CustomerRetrieveUpdateDestroy.as_view(), name='customerRetrieveUpdateDelete'),  # Retrieve, update, or delete a specific customer
 
+    # URLs for handling businesses
+    path('businesses/', views.CreateListBusiness.as_view(), name='CreateListBusiness'),  # Create and list businesses
+    path('businesses/<int:pk>/', views.BusinessRetrieveUpdateDestroy.as_view(), name='BusinessRetrieveUpdateDelete'),  # Retrieve, update, or delete a specific business
 
-    # create/get business 
-    path('businesses/', views.CreateListBusiness.as_view(), name='CreateListBusiness'),
-    # Retrieve a specific busisness
-    path('businesses/<int:pk>/', views.BusinessRetrieveUpdateDestroy.as_view(), name='BusinessRetrieveUpdateDelete'),
+    # URLs for handling locations
+    path('locations/', views.CreateListLocation.as_view(), name='CreateListLocation'),  # Create and list locations
+    path('locations/<int:pk>/', views.LocationRetrieveUpdateDestroy.as_view(), name='LocationRetrieveUpdateDestroy'),  # Retrieve, update, or delete a specific location
 
-    # create/get Location 
-    path('locations/', views.CreateListLocation.as_view(), name='CreateListLocation'),
-    # Retrieve a specific busisness
-    path('locations/<int:pk>/', views.LocationRetrieveUpdateDestroy.as_view(), name='LocationRetrieveUpdateDestroy'),
-
-
-
+    # URLs for handling customer-business-location associations
     path('customer-business-location/', views.CustomerBusinessLocationViewSet.as_view({
-        'get': 'list',
-        'post': 'create',
-        'put': 'update',
-        'patch': 'partial_update',
-        'delete': 'destroy'
+        'get': 'list',  # List all associations
+        'post': 'create',  # Create a new association
+        'put': 'update',  # Update an association
+        'patch': 'partial_update',  # Partially update an association
+        'delete': 'destroy'  # Delete an association
     })),
     path('customer-business-location/<int:pk>/', views.CustomerBusinessLocationViewSet.as_view({
-        'get': 'retrieve',
-        'put': 'update',
-        'patch': 'partial_update',
-        'delete': 'destroy'
+        'get': 'retrieve',  # Retrieve a specific association
+        'put': 'update',  # Update a specific association
+        'patch': 'partial_update',  # Partially update a specific association
+        'delete': 'destroy'  # Delete a specific association
     })),
-
 ]
