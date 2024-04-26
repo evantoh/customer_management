@@ -173,4 +173,74 @@ class BusinessModelTestCase(TestCase):
         expected_age = today.year - registration_date.year - ((today.month, today.day) < (registration_date.month, registration_date.day))
 
         # Check if the calculated age matches the expected age
-        self.assertEqual(saved_business.ageOfBusiness, expected_age)          
+        self.assertEqual(saved_business.ageOfBusiness, expected_age) 
+
+class LocationModelTestCase(TestCase):
+    def setUp(self):
+        # Create a sample location for testing
+        self.location = Location.objects.create(
+            county='Test County',
+            subCounty='Test Sub-County',
+            ward='Test Ward',
+            buildingName='Test Building',
+            floor='1'
+        )
+
+    def test_str_method(self):
+        # Test the __str__ method of the Location model.
+        self.assertEqual(str(self.location), 'Test Building, Test Ward, Test Sub-County, Test County')
+
+    def test_optional_fields(self):
+        # Test that optional fields can be left blank or null.
+   
+        # Create a location without specifying optional fields
+        location_without_optional_fields = Location.objects.create(
+            county='Another County',
+            subCounty='Another Sub-County',
+            ward='Another Ward'
+        )
+
+        # Retrieve the saved location object from the database
+        saved_location = Location.objects.get(county='Another County')
+
+        # Check that optional fields are None
+        self.assertIsNone(saved_location.buildingName)
+        self.assertIsNone(saved_location.floor)
+
+    def test_blank_fields(self):
+        # Test that fields with blank=True allow empty string values.
+ 
+        # Create a location with blank values for optional fields
+        location_with_blank_fields = Location.objects.create(
+            county='Blank County',
+            subCounty='Blank Sub-County',
+            ward='Blank Ward',
+            buildingName='',
+            floor=''
+        )
+
+        # Retrieve the saved location object from the database
+        saved_location = Location.objects.get(county='Blank County')
+
+        # Check that optional fields are saved as empty strings
+        self.assertEqual(saved_location.buildingName, '')
+        self.assertEqual(saved_location.floor, '')
+
+    def test_null_fields(self):
+        # Test that fields with null=True allow null values.
+
+        # Create a location with null values for optional fields
+        location_with_null_fields = Location.objects.create(
+            county='Null County',
+            subCounty='Null Sub-County',
+            ward='Null Ward',
+            buildingName=None,
+            floor=None
+        )
+
+        # Retrieve the saved location object from the database
+        saved_location = Location.objects.get(county='Null County')
+
+        # Check that optional fields are saved as None
+        self.assertIsNone(saved_location.buildingName)
+        self.assertIsNone(saved_location.floor)                 
