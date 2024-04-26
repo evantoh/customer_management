@@ -21,8 +21,8 @@ This Django project implements a RESTful API for managing customer information, 
 - **Partial update of a customer:** `PATCH /api/customers/<customer_id>/`
 - **Delete a customer:** `DELETE /api/customers/<customer_id>/`
 
-### Customer API SwaggerUI
-![Swagger Documentation](swagger.png)
+#### Customer API SwaggerUI
+![Swagger Documentation](https://github.com/evantoh/customer_management/blob/main/static/images/business-swagger.png)
 
 
 ### Business API Endpoints
