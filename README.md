@@ -1,13 +1,11 @@
-# customer_management
-managing customer information.
 # Customer Relationship Management API
 
 This Django project implements a RESTful API for managing customer information, businesses, locations, and their relationships.
 
 ## Features
 
-- CRUD operations for customers, businesses, locations and customer-business-locations
-- Managing relationships between customers,business and location
+- CRUD operations for customers, businesses, locations, and customer-business-locations
+- Managing relationships between customers, businesses, and locations
 - RESTful API endpoints for creating, retrieving, updating, and deleting data
 
 ## Authentication
@@ -71,12 +69,11 @@ The following ERD illustrates the entities and their relationships in the databa
 
 ## Relationships
 
-- One customer can have multiple business relationships.(one-to-many)
-- One business can have multiple customer relationships.(one-to-many)
-- Each customer-business relationship is associated with a location.(one-to-many)
-- customers can have relationships with multiple businesses and  businesses can have relationships with multiple customers.(many-to-many)
-- businesses can have relationships with multiple customers.(many-to-many)
-- A location can host multiple businesses.
+- One customer can have multiple business relationships (one-to-many)
+- One business can have multiple customer relationships (one-to-many)
+- Each customer-business relationship is associated with a location (one-to-many)
+- Customers can have relationships with multiple businesses and businesses can have relationships with multiple customers (many-to-many)
+- A location can host multiple businesses
 
 ## Tables
 
@@ -124,15 +121,6 @@ The following ERD illustrates the entities and their relationships in the databa
 ## Indexes
 
 - Indexes can be added to improve query performance on frequently accessed columns, such as `customer_id`, `business_id`, and `location_id`.
-
-
-
-
-
-
-
-
-
 
 ## Endpoints
 
@@ -202,4 +190,3 @@ The following ERD illustrates the entities and their relationships in the databa
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
-
