@@ -22,7 +22,7 @@ This Django project implements a RESTful API for managing customer information, 
 - **Delete a customer:** `DELETE /api/customers/<customer_id>/`
 
 #### Customer API SwaggerUI
-![Swagger Documentation](https://github.com/evantoh/customer_management/blob/main/static/images/business-swagger.png)
+![Swagger Documentation](https://github.com/evantoh/customer_management/blob/main/static/images/customers-swagger.png)
 
 
 ### Business API Endpoints
@@ -34,6 +34,9 @@ This Django project implements a RESTful API for managing customer information, 
 - **Partial update of a business:** `PATCH /api/businesses/<business_id>/`
 - **Delete a business:** `DELETE /api/businesses/<business_id>/`
 
+#### Business API SwaggerUI
+![Swagger Documentation](https://github.com/evantoh/customer_management/blob/main/static/images/business-swagger.png)
+
 ### Location API Endpoints
 
 - **Create a location:** `POST /api/locations/`
@@ -43,7 +46,10 @@ This Django project implements a RESTful API for managing customer information, 
 - **Partial update of a location:** `PATCH /api/locations/<location_id>/`
 - **Delete a location:** `DELETE /api/locations/<location_id>/`
 
-### Customer-Business-locations Relationship API Endpoints
+#### Location API SwaggerUI
+![Swagger Documentation](https://github.com/evantoh/customer_management/blob/main/static/images/location-swagger.png)
+
+### Customer-Business-Locations Relationship API Endpoints
 
 - **Create a customer-business relationship:** `POST /api/customer-business-location/`
 - **Retrieve all customer-business relationships:** `GET /api/customer-business-location/`
@@ -51,6 +57,9 @@ This Django project implements a RESTful API for managing customer information, 
 - **Update a customer-business relationship:** `PUT /api/customer-business-location/<relationship_id>/`
 - **Partial update of a customer-business relationship:** `PATCH /api/customer-business-location/<relationship_id>/`
 - **Delete a customer-business relationship:** `DELETE /api/customer-business-location/<relationship_id>/`
+
+#### Customer-Business-Locations API SwaggerUI
+![Swagger Documentation](https://github.com/evantoh/customer_management/blob/main/static/images/customer-business-location-swagger.png)
 
 ## Setup
 
