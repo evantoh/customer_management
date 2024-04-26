@@ -4,6 +4,8 @@ from rest_framework import status
 from rest_framework.test import APIClient
 from .models import Customer,Business,Location,CustomerBusinessLocation
 from datetime import datetime
+from datetime import date
+
 
 
 # Unit Testing on the Customer Model
@@ -107,3 +109,68 @@ class CustomerBusinessLocationAPITest(TestCase):
         # Check if the string representation is as expected
         expected_string = f"{self.customer.customerName} - {self.business.businessName} - {self.location}"
         self.assertEqual(str(cbl), expected_string)
+
+
+
+class BusinessModelTestCase(TestCase):
+    def setUp(self):
+        # Create a sample business for testing
+        self.business = Business.objects.create(
+            businessName='Test Business',
+            businessCategory='Test Category',
+            businessRegistrationDate=date(2020, 1, 1)
+        )
+
+    def test_age_of_business_calculation(self):
+        #Test that the age of the business is calculated correctly.
+        
+        # Calculate expected age of the business
+        today = date.today()
+        registration_date = self.business.businessRegistrationDate
+        expected_age = today.year - registration_date.year - ((today.month, today.day) < (registration_date.month, registration_date.day))
+
+        # Retrieve the saved business object from the database
+        saved_business = Business.objects.get(businessName='Test Business')
+
+        # Check if the calculated age matches the expected age
+        self.assertEqual(saved_business.ageOfBusiness, expected_age) 
+
+    def test_str_method(self):
+        # Test the __str__ method of the Business model.
+
+        self.assertEqual(str(self.business), 'Test Business')
+
+    def test_optional_fields(self):
+        # Test that optional fields can be left blank or null.
+        # Create a business without specifying optional fields
+        business_without_optional_fields = Business.objects.create(
+            businessName='Another Test Business'
+        )
+
+        # Retrieve the saved business object from the database
+        saved_business = Business.objects.get(businessName='Another Test Business')
+
+        # Check that optional fields are None
+        self.assertIsNone(saved_business.businessCategory)
+        self.assertIsNone(saved_business.businessRegistrationDate)
+        self.assertIsNone(saved_business.ageOfBusiness)
+
+    def test_save_method(self):
+        # Test that the save method correctly calculates the age of the business.
+ 
+        # Create a new business with a registration date
+        new_business = Business.objects.create(
+            businessName='New Business',
+            businessRegistrationDate=date(2019, 1, 1)
+        )
+
+        # Retrieve the saved business object from the database
+        saved_business = Business.objects.get(businessName='New Business')
+
+        # Calculate expected age of the business
+        today = date.today()
+        registration_date = saved_business.businessRegistrationDate
+        expected_age = today.year - registration_date.year - ((today.month, today.day) < (registration_date.month, registration_date.day))
+
+        # Check if the calculated age matches the expected age
+        self.assertEqual(saved_business.ageOfBusiness, expected_age)          
