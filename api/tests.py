@@ -6,9 +6,7 @@ from .models import Customer,Business,Location,CustomerBusinessLocation
 from datetime import datetime
 
 
-
-
-
+# Unit Testing on the Customer Model
 class CustomerModelTest(TestCase):
     def test_create_customer(self):
         # Create a Customer instance
@@ -38,8 +36,11 @@ class CustomerModelTest(TestCase):
         # Attempt to create a Customer instance without required fields and check if an error is raised expected error "ValueError"
         with self.assertRaises(ValueError):
             Customer.objects.create()
-    
+
+
+
 class CustomerModelValidationTest(TestCase):
+    # Validation Tests on the Customer Model 
     def test_unique_email(self):
         # Create a Customer instance with a unique email address
         Customer.objects.create(customerName="Evans Test", emailAddress="evans@gmail.com")
@@ -54,6 +55,7 @@ class CustomerModelValidationTest(TestCase):
         with self.assertRaises(ValueError):
             Customer.objects.create(customerName="Jane Kamau", phoneNumber="1234567890")
 
+    # Boundary Tests on the Customer Model
     def test_maximum_length(self):
         # Attempt to create a Customer with fields exceeding maximum length
         with self.assertRaises(ValueError):
@@ -73,7 +75,7 @@ class CustomerModelValidationTest(TestCase):
         # Attempt to create a Customer with a future date of birth
         with self.assertRaises(ValueError):
             Customer.objects.create(customerName="Evans Test", dateOfBirth="2050-01-01")
-            
+
 
 class CustomerBusinessLocationAPITest(TestCase):
     def setUp(self):
