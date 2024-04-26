@@ -10,6 +10,18 @@ This Django project implements a RESTful API for managing customer information, 
 - Managing relationships between customers,business and location
 - RESTful API endpoints for creating, retrieving, updating, and deleting data
 
+## Authentication
+
+This API uses basic authentication to secure access to its endpoints. To authenticate requests, clients must include an `Authorization` header with a base64-encoded username and password in the format `Basic <credentials>`.
+
+### Obtaining Credentials
+
+To obtain credentials, users can register for an account and provide their username and password. The server verifies the credentials and responds with a token that can be used for subsequent requests.
+
+### Using Credentials
+
+Once a client has obtained credentials, they can include them in the `Authorization` header of their requests to authenticate.
+
 ## Endpoints
 
 ### Customer API Endpoints
