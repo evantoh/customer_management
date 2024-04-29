@@ -173,6 +173,11 @@ The following ERD illustrates the entities and their relationships in the databa
 #### Customer-Business-Locations API SwaggerUI
 ![Swagger Documentation](https://github.com/evantoh/customer_management/blob/main/static/images/customer-business-location-swagger.png)
 
+
+## Sample Request
+![Swagger Documentation](https://github.com/evantoh/customer_management/blob/main/static/images/sample-request.png)
+
+
 ## Setup
 
 1. Clone the repository.
