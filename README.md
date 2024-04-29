@@ -182,9 +182,11 @@ The following ERD illustrates the entities and their relationships in the databa
 
 1. Clone the repository.
 2. Install dependencies using `pip install -r requirements.txt`.
-3. Apply database migrations using `python manage.py migrate`.
-4. Start the development server using `python manage.py runserver`.
-5. Access the API endpoints using the provided URLs.
+3. Apply database migrations using `python manage.py migrate` or `make migrate`.
+4. Start the development server using `python manage.py runserver` or `make server`.
+5. Run tests using `python manage.py test` or `make test`.
+6. Access the API endpoints using the provided URLs.
+
 
 ## Technologies Used
 
