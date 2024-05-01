@@ -38,7 +38,6 @@ class CreateListBusiness(generics.ListCreateAPIView):
 
 class BusinessRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [permissions.IsAuthenticated]  # Permission class for accessing the view
-    permission_classes = [permissions.IsAuthenticated]
     queryset = Business.objects.all()
     serializer_class = BusinessSerializer
 
