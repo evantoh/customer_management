@@ -49,4 +49,4 @@ class CustomerBusinessLocation(models.Model):
     location = models.ForeignKey(Location, on_delete=models.CASCADE, blank=True, null=True)  # Optional reference to the location
 
     def __str__(self):
-        return f"{self.customer.customerName} - {self.business.businessName} - {self.location}"  # String representation of the customer-business relationship
+        return f"{self.customer.customerName} - {self.business.businessName} - {self.location.county}"  # String representation of the customer-business relationship
