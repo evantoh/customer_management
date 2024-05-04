@@ -34,6 +34,34 @@ class CustomerBusinessLocationSerializer(serializers.ModelSerializer):
     business = BusinessSerializer()  # Serialize related Business model
     location = LocationSerializer()  # Serialize related Location model
 
+    def create(self, validated_data):
+        # Extract nested serializer data
+        customer_data = validated_data.pop('customer', None)
+        business_data = validated_data.pop('business', None)
+        location_data = validated_data.pop('location', None)
+
+        # Create or retrieve Customer instance
+        customer_instance = None
+        if customer_data:
+            customer_instance, _ = Customer.objects.get_or_create(**customer_data)
+
+        # Create or retrieve Business instance
+        business_instance = None
+        if business_data:
+            business_instance, _ = Business.objects.get_or_create(**business_data)
+
+        # Create CustomerBusinessLocation instance
+        customer_business_location = CustomerBusinessLocation.objects.create(customer=customer_instance, business=business_instance, **validated_data)
+
+        # Create or update related models
+        if location_data:
+            location_instance, _ = Location.objects.get_or_create(**location_data)
+            customer_business_location.location = location_instance
+
+        customer_business_location.save()
+
+        return customer_business_location
+
     class Meta:
         model = CustomerBusinessLocation
         fields = '__all__'  # Serialize all fields of the CustomerBusinessLocation model
