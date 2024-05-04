@@ -41,20 +41,27 @@ class CustomerBusinessLocationSerializer(serializers.ModelSerializer):
         location_data = validated_data.pop('location', None)
 
         # Create or retrieve Customer instance
-        customer_instance = None
+        # Check if customer_data is provided
+        business_instance = None
         if customer_data:
+            # If customer_data is provided, attempt to retrieve an existing Customer instance
+            # or create a new one if it doesn't exist
             customer_instance, _ = Customer.objects.get_or_create(**customer_data)
 
         # Create or retrieve Business instance
-        business_instance = None
         if business_data:
+            # If business_data is provided, attempt to retrieve an existing Business instance
+            # or create a new one if it doesn't exist
             business_instance, _ = Business.objects.get_or_create(**business_data)
 
         # Create CustomerBusinessLocation instance
-        customer_business_location = CustomerBusinessLocation.objects.create(customer=customer_instance, business=business_instance, **validated_data)
+        customer_business_location = CustomerBusinessLocation.objects.create(
+            customer=customer_instance, business=business_instance, **validated_data)
 
         # Create or update related models
         if location_data:
+            # If location_data is provided, attempt to retrieve an existing Location instance
+            # or create a new one if it doesn't exist
             location_instance, _ = Location.objects.get_or_create(**location_data)
             customer_business_location.location = location_instance
 
