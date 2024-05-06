@@ -22,6 +22,26 @@ Once a client has obtained credentials, they can include them in the `Authorizat
 
 # Database Design Document
 
+# Customer Relationship Management (CRM) API
+
+This Django project implements a RESTful API for managing customer information, businesses, locations, and their relationships.
+
+## Prerequisites
+
+Before setting up and running the CRM API project, ensure that you have the following prerequisites installed and configured:
+
+1. **Python**: Make sure you have Python installed on your system. You can download and install Python from the [official Python website](https://www.python.org/).
+
+2. **Django**: The project is built using the Django web framework.
+
+3. **Database**: Ensure that you have MySQL installed and configured on your system. The project is designed to work with MySQL as the database system. You can download and install MySQL from the [official MySQL website](https://www.mysql.com/).
+
+4. **Git**: Git is used for version control. Make sure you have Git installed on your system to clone the project repository. You can download and install Git from the [official Git website](https://git-scm.com/).
+
+5. **Dependencies**: After cloning the project repository, navigate to the project directory and install the required dependencies listed in the `requirements.txt` file using pip:
+
+
+
 ## Overview
 
 This document outlines the design of the database for managing customer information, businesses, locations, and their relationships.
