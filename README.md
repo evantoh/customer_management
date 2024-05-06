@@ -21,11 +21,6 @@ To obtain credentials, users can register for an account and provide their usern
 Once a client has obtained credentials, they can include them in the `Authorization` header of their requests to authenticate.
 
 # Database Design Document
-
-# Customer Relationship Management (CRM) API
-
-This Django project implements a RESTful API for managing customer information, businesses, locations, and their relationships.
-
 ## Prerequisites
 
 Before setting up and running the CRM API project, ensure that you have the following prerequisites installed and configured:
